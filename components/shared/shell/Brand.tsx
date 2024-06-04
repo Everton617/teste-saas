@@ -9,10 +9,10 @@ const Brand = () => {
       <Image
         src={theme !== 'dark' ? app.logoUrl : '/logowhite.png'}
         alt={app.name}
-        width={30}
-        height={30}
+        width={80}
+        height={0}
       />
-      {app.name}
+      
     </div>
   );
 };

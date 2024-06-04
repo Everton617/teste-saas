@@ -10,8 +10,6 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import type { NextPageWithLayout } from 'types';
 import { authProviderEnabled } from '@/lib/auth';
 import { AuthLayout } from '@/components/layouts';
-import GithubButton from '@/components/auth/GithubButton';
-import GoogleButton from '@/components/auth/GoogleButton';
 import { JoinWithInvitation, Join } from '@/components/auth';
 import Head from 'next/head';
 import { Loading } from '@/components/shared';
@@ -51,13 +49,7 @@ const Signup: NextPageWithLayout<
         <title>{t('sign-up-title')}</title>
       </Head>
       <div className="rounded p-6 border">
-        <div className="flex gap-2 flex-wrap">
-          {authProviders.github && <GithubButton />}
-          {authProviders.google && <GoogleButton />}
-        </div>
-
-        {(authProviders.github || authProviders.google) &&
-          authProviders.credentials && <div className="divider">{t('or')}</div>}
+       
 
         {authProviders.credentials && (
           <>
@@ -73,12 +65,12 @@ const Signup: NextPageWithLayout<
         )}
       </div>
       <p className="text-center text-sm text-gray-600 mt-3">
-        {t('already-have-an-account')}
+        {t('Já tem uma conta?')}
         <Link
           href={`/auth/login/${params}`}
-          className="font-medium text-primary hover:text-[color-mix(in_oklab,oklch(var(--p)),black_7%)]"
+          className="font-medium text-red-500 hover:text-black"
         >
-          &nbsp;{t('sign-in')}
+          &nbsp;{t('Conecte-se')}
         </Link>
       </p>
     </>
@@ -87,7 +79,7 @@ const Signup: NextPageWithLayout<
 
 Signup.getLayout = function getLayout(page: ReactElement) {
   return (
-    <AuthLayout heading="get-started" description="create-a-new-account">
+    <AuthLayout heading="Comece Agora" description="Crie uma nova conta">
       {page}
     </AuthLayout>
   );

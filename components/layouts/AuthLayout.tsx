@@ -21,18 +21,18 @@ export default function AuthLayout({
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <Image
             src={app.logoUrl}
-            className="mx-auto h-12"
+            className="mx-auto h-22"
             alt={app.name}
-            width={48}
-            height={48}
+            width={130}
+            height={70}
           />
           {heading && (
-            <h2 className="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+            <h2 className="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-red-500">
               {t(heading)}
             </h2>
           )}
           {description && (
-            <p className="text-center text-gray-600 dark:text-white">
+            <p className="text-center text-red-500 dark:text-white">
               {t(description)}
             </p>
           )}

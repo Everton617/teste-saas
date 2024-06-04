@@ -17,8 +17,6 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import env from '@/lib/env';
 import type { NextPageWithLayout } from 'types';
 import { AuthLayout } from '@/components/layouts';
-import GithubButton from '@/components/auth/GithubButton';
-import GoogleButton from '@/components/auth/GoogleButton';
 import { Alert, InputWithLabel, Loading } from '@/components/shared';
 import { authProviderEnabled } from '@/lib/auth';
 import Head from 'next/head';
@@ -122,13 +120,9 @@ const Login: NextPageWithLayout<
         </Alert>
       )}
       <div className="rounded p-6 border">
-        <div className="flex gap-2 flex-wrap">
-          {authProviders.github && <GithubButton />}
-          {authProviders.google && <GoogleButton />}
-        </div>
+      
 
-        {(authProviders.github || authProviders.google) &&
-          authProviders.credentials && <div className="divider">{t('or')}</div>}
+       
 
         {authProviders.credentials && (
           <form onSubmit={formik.handleSubmit}>
@@ -146,15 +140,15 @@ const Login: NextPageWithLayout<
                 <InputWithLabel
                   type={isPasswordVisible ? 'text' : 'password'}
                   name="password"
-                  placeholder={t('password')}
+                  placeholder={t('Senha')}
                   value={formik.values.password}
                   label={
                     <label className="label">
-                      <span className="label-text">{t('password')}</span>
+                      <span className="label-text">{t('Senha')}</span>
                       <span className="label-text-alt">
                         <Link
                           href="/auth/forgot-password"
-                          className="text-sm text-primary hover:text-[color-mix(in_oklab,oklch(var(--p)),black_7%)]"
+                          className="text-sm text-error hover:text-[color-mix(in_oklab,oklch(var(--p)),black_7%)]"
                         >
                           {t('forgot-password')}
                         </Link>
@@ -180,13 +174,13 @@ const Login: NextPageWithLayout<
             <div className="mt-3 space-y-3">
               <Button
                 type="submit"
-                color="primary"
+                color="error"
                 loading={formik.isSubmitting}
                 active={formik.dirty}
                 fullWidth
                 size="md"
               >
-                {t('sign-in')}
+                {t('Conectar')}
               </Button>
               <AgreeMessage text={t('sign-in')} />
             </div>
@@ -215,12 +209,12 @@ const Login: NextPageWithLayout<
         </div>
       </div>
       <p className="text-center text-sm text-gray-600 mt-3">
-        {t('dont-have-an-account')}
+        {t('Não tem conta?')}
         <Link
           href={`/auth/join${params}`}
-          className="font-medium text-primary hover:text-[color-mix(in_oklab,oklch(var(--p)),black_7%)]"
+          className="font-medium text-error hover:text-black"
         >
-          &nbsp;{t('create-a-free-account')}
+          &nbsp;{t('Criar Conta')}
         </Link>
       </p>
     </>
@@ -229,7 +223,7 @@ const Login: NextPageWithLayout<
 
 Login.getLayout = function getLayout(page: ReactElement) {
   return (
-    <AuthLayout heading="welcome-back" description="log-in-to-account">
+    <AuthLayout heading="Bem Vindo " description="Conecte-se na sua conta">
       {page}
     </AuthLayout>
   );

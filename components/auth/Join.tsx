@@ -86,18 +86,18 @@ const Join = ({ recaptchaSiteKey }: JoinProps) => {
       <div className="space-y-1">
         <InputWithLabel
           type="text"
-          label={t('name')}
+          label={t('Nome')}
           name="name"
-          placeholder={t('your-name')}
+          placeholder={t('Seu Nome')}
           value={formik.values.name}
           error={formik.touched.name ? formik.errors.name : undefined}
           onChange={formik.handleChange}
         />
         <InputWithLabel
           type="text"
-          label={t('team')}
+          label={t('Equipe')}
           name="team"
-          placeholder={t('team-name')}
+          placeholder={t('Nome da Equipe')}
           value={formik.values.team}
           error={formik.errors.team}
           onChange={formik.handleChange}
@@ -106,7 +106,7 @@ const Join = ({ recaptchaSiteKey }: JoinProps) => {
           type="email"
           label={t('email')}
           name="email"
-          placeholder={t('email-placeholder')}
+          placeholder={t('exemplo@qu1ck.com')}
           value={formik.values.email}
           error={formik.errors.email}
           onChange={formik.handleChange}
@@ -114,9 +114,9 @@ const Join = ({ recaptchaSiteKey }: JoinProps) => {
         <div className="relative flex">
           <InputWithLabel
             type={isPasswordVisible ? 'text' : 'password'}
-            label={t('password')}
+            label={t('Senha')}
             name="password"
-            placeholder={t('password')}
+            placeholder={t('Senha')}
             value={formik.values.password}
             error={formik.errors.password}
             onChange={formik.handleChange}
@@ -135,13 +135,13 @@ const Join = ({ recaptchaSiteKey }: JoinProps) => {
       <div className="mt-3 space-y-3">
         <Button
           type="submit"
-          color="primary"
+          color="error"
           loading={formik.isSubmitting}
           active={formik.dirty}
           fullWidth
           size="md"
         >
-          {t('create-account')}
+          {t('Criar Conta')}
         </Button>
         <AgreeMessage text={t('create-account')} />
       </div>
